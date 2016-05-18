@@ -29,7 +29,6 @@ public class AndroidCustomGalleryActivity extends Activity {
     File[] listFile;
 
 
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,19 +39,13 @@ public class AndroidCustomGalleryActivity extends Activity {
         imagegrid.setAdapter(imageAdapter);
 
     }
-    public void getFromSdcard()
-    {
+
+    public void getFromSdcard() {
 //        File file= new File(android.os.Environment.getExternalStorageDirectory(),"CameraApp");
-     File file= new File(Environment.getExternalStorageDirectory()+"/Audio_Recorder_Picture","CameraApp");
-
-        if (file.isDirectory())
-        {
+        File file = new File(Environment.getExternalStorageDirectory() + "/Audio_Recorder_Picture", "CameraApp");
+        if (file.isDirectory()) {
             listFile = file.listFiles();
-
-
-            for (int i = 0; i < listFile.length; i++)
-            {
-
+            for (int i = 0; i < listFile.length; i++) {
                 f.add(listFile[i].getAbsolutePath());
 
             }
@@ -87,20 +80,17 @@ public class AndroidCustomGalleryActivity extends Activity {
                 holder.imageview = (ImageView) convertView.findViewById(R.id.thumbImage);
 
                 convertView.setTag(holder);
-            }
-            else {
+            } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
 
             Bitmap myBitmap = BitmapFactory.decodeFile(f.get(position));
             holder.imageview.setImageBitmap(myBitmap);
             return convertView;
         }
     }
+
     class ViewHolder {
         ImageView imageview;
-
-
     }
 }
